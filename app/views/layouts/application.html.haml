@@ -1,0 +1,27 @@
+!!! 5
+%html
+  %head
+    %title Wildfire Programming Challenge
+    = stylesheet_link_tag 'application'
+    = javascript_include_tag 'jquery'
+    = csrf_meta_tag
+
+  %body
+    #header
+      = facebook_login_button('large')
+      %h1 WildFire Programming Challenge
+    #content
+      #fb-root
+      = yield
+
+:javascript
+  window.fbAsyncInit = function() {
+    FB.init({appId: #{Settings.instance.}, status: true, cookie: true, xfbml: true});
+  };
+  (function() {
+    var e = document.createElement('script');
+    e.type = 'text/javascript';
+    e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
+    e.async = true;
+    document.getElementById('fb-root').appendChild(e);
+  }());
