@@ -1,6 +1,7 @@
 defaults: &defaults
   facebook:
     app_id: 322201971143207
+    app_secret: 7cc00eab6bf9bd8f31dd4132b43455bd
 
 development:
   <<: *defaults
