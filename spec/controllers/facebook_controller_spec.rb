@@ -16,7 +16,8 @@ describe FacebookController do
         @oauth.should_receive(:get_user_info_from_cookie).and_return(user_info)
         Koala::Facebook::GraphAPI.should_receive(:new).with('1234567890').and_return(@graph)
         User.should_receive(:new).and_return(@user)
-        @friends = mock('friends')
+        @alphabetized_friends = mock('friends')
+        @friends = mock('friends', :alphabetized => @alphabetized_friends)
         @user.should_receive(:friends).and_return(@friends)
 
         get :index
@@ -26,8 +27,8 @@ describe FacebookController do
         response.should be_success
       end
 
-      it 'should assign friends' do
-        assigns[:friends].should == @friends
+      it 'should assign friends in alphabetical order' do
+        assigns[:friends].should == @alphabetized_friends
       end
     end
 

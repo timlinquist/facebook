@@ -3,7 +3,7 @@ class FacebookController < ApplicationController
   include FacebookAuth::Methods
 
   def index
-    @friends = current_user.friends
+    @friends = current_user.friends.alphabetized
   end
 
   def login

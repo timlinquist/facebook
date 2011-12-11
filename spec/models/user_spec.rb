@@ -26,7 +26,7 @@ describe User do
       it 'can be retrieved via the graph api' do
         @graph.should_receive(:get_connections).with(@uid, 'friends').and_return(@friends)
 
-        @user.friends.should == @friends
+        @user.friends.should have(2).entries
       end
 
       it 'are memoized after the first call' do

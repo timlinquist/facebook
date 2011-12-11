@@ -7,6 +7,6 @@ class User
   end
 
   def friends
-    @friends ||= graph.get_connections(uid, 'friends')
+    @friends ||= FriendList.new(graph.get_connections(uid, 'friends'))
   end
 end
