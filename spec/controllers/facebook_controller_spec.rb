@@ -16,8 +16,8 @@ describe FacebookController do
         @oauth.should_receive(:get_user_info_from_cookie).and_return(user_info)
         Koala::Facebook::GraphAPI.should_receive(:new).with('1234567890').and_return(@graph)
         User.should_receive(:new).and_return(@user)
-        @likes = mock('likes')
-        @user.should_receive(:likes_by_category).and_return(@likes)
+        @friends = mock('friends')
+        @user.should_receive(:friends).and_return(@friends)
 
         get :index
       end
@@ -26,8 +26,8 @@ describe FacebookController do
         response.should be_success
       end
 
-      it 'should assign likes' do
-        assigns[:likes_by_category].should == @likes
+      it 'should assign friends' do
+        assigns[:friends].should == @friends
       end
     end
 

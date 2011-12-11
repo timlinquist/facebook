@@ -1,6 +1,4 @@
-%h2 Your "likes":
-- @likes_by_category.each do |category, likes|
-  %h3= category
-  %ul
-    - likes.each do |like|
-      %li= like['name']
+%h2 Please select one of your friends to score their commenters:
+
+= form_for :friend do |form|
+  = form.select :id, @friends.collect{|f| [f['name'], f['id']] }
