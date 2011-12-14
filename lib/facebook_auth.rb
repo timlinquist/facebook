@@ -21,9 +21,11 @@ module FacebookAuth
 
     def facebook_auth
       @oauth = Koala::Facebook::OAuth.new(Settings.facebook.app_id, Settings.facebook.app_secret)
+
       if fb_user_info = @oauth.get_user_info_from_cookie(request.cookies)
         @graph = Koala::Facebook::GraphAPI.new(fb_user_info['access_token'])
-        @user = User.new(@graph, fb_user_info['uid'])
+
+        @user = User.new(@graph, fb_user_info['user_id'])
       end
     end
 

@@ -28,6 +28,7 @@ GEM
       activemodel (= 3.0.3)
       activesupport (= 3.0.3)
     activesupport (3.0.3)
+    addressable (2.2.6)
     archive-tar-minitar (0.5.2)
     arel (2.0.7)
     builder (2.1.2)
@@ -35,6 +36,10 @@ GEM
     diff-lcs (1.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
+    faraday (0.7.5)
+      addressable (~> 2.2.6)
+      multipart-post (~> 1.1.3)
+      rack (>= 1.1.0, < 2)
     haml (3.0.25)
     haml-rails (0.3.4)
       actionpack (~> 3.0)
@@ -42,9 +47,9 @@ GEM
       haml (~> 3.0)
       railties (~> 3.0)
     i18n (0.5.0)
-    json (1.4.6)
-    koala (0.10.0)
-      json (>= 1.0)
+    koala (1.2.1)
+      faraday (~> 0.7.0)
+      multi_json (~> 1.0)
     linecache19 (0.5.12)
       ruby_core_source (>= 0.1.4)
     mail (2.2.15)
@@ -53,6 +58,8 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
+    multi_json (1.0.4)
+    multipart-post (1.1.4)
     polyglot (0.3.1)
     rack (1.2.1)
     rack-mount (0.6.13)
@@ -108,7 +115,7 @@ PLATFORMS
 DEPENDENCIES
   haml
   haml-rails
-  koala
+  koala (~> 1.2.1)
   rails (= 3.0.3)
   rspec
   rspec-rails

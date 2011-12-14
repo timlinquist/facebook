@@ -12,7 +12,7 @@ describe FacebookController do
 
     context 'when logged into facebook' do
       before do
-        user_info = {'access_token' => '1234567890', 'uid' => 42}
+        user_info = {'access_token' => '1234567890', 'user_id' => 42}
         @oauth.should_receive(:get_user_info_from_cookie).and_return(user_info)
         Koala::Facebook::GraphAPI.should_receive(:new).with('1234567890').and_return(@graph)
         User.should_receive(:new).and_return(@user)

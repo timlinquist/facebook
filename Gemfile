@@ -32,7 +32,7 @@ gem 'settingslogic', '~> 2.0'
 
 gem 'haml'
 gem 'haml-rails'
-gem 'koala'
+gem 'koala', '~> 1.2.1'
 
 group :development, :test do
   gem 'rspec'
