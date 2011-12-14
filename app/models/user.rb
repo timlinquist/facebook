@@ -9,4 +9,9 @@ class User
   def friends
     @friends ||= FriendList.new(graph.get_connections(uid, 'friends'))
   end
+
+  def posts(query_params = {})
+    query_params.reverse_merge!({:limit => 100})
+    @posts ||= graph.get_connections(uid, 'posts', query_params)
+  end
 end
