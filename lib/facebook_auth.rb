@@ -15,7 +15,7 @@ module FacebookAuth
 
     def require_login
       unless logged_in?
-        redirect_to :action => :login
+        redirect_to :controller => :facebook, :action => :login
       end
     end
 
@@ -30,11 +30,15 @@ module FacebookAuth
     end
 
     def logged_in?
-      !!@user
+      !!current_user
     end
 
     def current_user
       @user
+    end
+
+    def graph
+      @graph
     end
   end
 

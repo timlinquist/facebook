@@ -50,6 +50,8 @@ FbBase::Application.routes.draw do
   # just remember to delete public/index.html.
   # root :to => "welcome#index"
 
+  resource :friend
+
   match 'facebook/:action' => 'facebook', :as => :facebook
   root :to => 'facebook#index'
 
