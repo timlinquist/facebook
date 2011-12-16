@@ -16,6 +16,9 @@ class FriendsController < ApplicationController
       redirect_to('/facebook/index') and return
     end
 
+    friend_rank = FriendRank.new(@posts)
+    @ranked_friends = friend_rank.rank
+
     render :action => :show
   end
 
