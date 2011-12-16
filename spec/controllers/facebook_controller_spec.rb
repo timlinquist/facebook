@@ -1,6 +1,30 @@
 require 'spec_helper'
 
 describe FacebookController do
+  describe "Handling expired/invalid facebook sessions" do
+    before( :each ) do
+      @user = User.new(mock('graph'), 42)
+      @oauth = mock('oauth')
+      @graph = mock('graph')
+    end
+
+    it "reraises when the error is not due to a stale session" do
+      Koala::Facebook::OAuth.should_receive(:new).and_return(@oauth)
+      exception = Koala::Facebook::APIError.new('message' => 'Not a stale session')
+      @oauth.should_receive(:get_user_info_from_cookie).and_raise(exception)
+
+      lambda { get :login }.should raise_error(Koala::Facebook::APIError)
+    end
+
+    it "notifies the user of what happened" do
+      Koala::Facebook::OAuth.should_receive(:new).and_return(@oauth)
+      exception = Koala::Facebook::APIError.new('message' => 'OAuthException: Code or session expired.')
+      @oauth.should_receive(:get_user_info_from_cookie).and_raise(exception)
+      get :login
+
+      @controller.flash[:error].should_not be_blank
+    end
+  end
 
   describe 'index with GET' do
     before do

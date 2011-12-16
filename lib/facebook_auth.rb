@@ -22,11 +22,25 @@ module FacebookAuth
     def facebook_auth
       @oauth = Koala::Facebook::OAuth.new(Settings.facebook.app_id, Settings.facebook.app_secret)
 
-      if fb_user_info = @oauth.get_user_info_from_cookie(request.cookies)
-        @graph = Koala::Facebook::GraphAPI.new(fb_user_info['access_token'])
-
-        @user = User.new(@graph, fb_user_info['user_id'])
+      begin
+        fb_user_info = @oauth.get_user_info_from_cookie(request.cookies)
+      rescue Koala::Facebook::APIError => exception
+        handle_stale_session(exception) and return
+      ensure
+        if fb_user_info
+          @graph = Koala::Facebook::GraphAPI.new(fb_user_info['access_token'])
+          @user = User.new(@graph, fb_user_info['user_id'])
+        end
       end
+    end
+
+    def handle_stale_session(exception)
+      raise exception unless exception.message =~ /OAuthException/
+
+      flash[:error] = <<-ERR
+        Oops! We had a mixup communicating with facebook.
+        Please log back into facebook and retry your last operation.
+      ERR
     end
 
     def logged_in?
