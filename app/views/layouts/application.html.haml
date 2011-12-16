@@ -9,7 +9,9 @@
   %body
     #header
       = facebook_login_button('large')
+      = render :partial => 'shared/flash', :locals => {:flash => flash}
       %h1 WildFire Programming Challenge
+
     #content
       #fb-root
       = yield

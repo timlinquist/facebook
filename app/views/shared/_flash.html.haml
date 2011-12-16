@@ -1,0 +1,5 @@
+- [:notice, :error, :success].each do |key|
+  - next if flash.fetch(key, '').blank?
+
+  %div{:class => "#{key}", :id => "flash"}
+    = flash[key]
