@@ -12,6 +12,6 @@ class User
 
   def posts(query_params = {})
     query_params.reverse_merge!({:limit => 100})
-    @posts ||= graph.get_connections(uid, 'posts', query_params)
+    @posts ||= graph.get_connections(uid, 'feed', query_params)
   end
 end

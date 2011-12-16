@@ -34,7 +34,7 @@ describe User do
       it 'can be retrieved via the graph api' do
         @graph.should_receive(:get_connections) do |uid, connection, query_params|
           uid.should == @uid
-          connection.should == 'posts'
+          connection.should == 'feed'
           @posts
         end
 
@@ -44,7 +44,7 @@ describe User do
       it "uses the query params passed in when retrieving" do
         @graph.should_receive(:get_connections) do |uid, connection, query_params|
           uid.should == @uid
-          connection.should == 'posts'
+          connection.should == 'feed'
           query_params[:limit].should == 50
         end
 
