@@ -9,24 +9,7 @@ describe User do
 
   describe "retrieving posts" do
     before do
-      @posts = [{
-        "id"=>"1104556967_2372165059261",
-        "from"=>{"name"=>"Brittany Fleischman", "id"=>"1104556967"},
-        "story"=>"Brittany Fleischman and Lindsay Carlton are now friends.",
-        "story_tags"=>{
-          "24"=>[{"id"=>1452240109, "name"=>"Lindsay Carlton", "offset"=>24, "length"=>15}],
-          "0"=> [{
-            "id"=>1104556967,
-            "name"=>"Brittany Fleischman",
-            "offset"=>0,
-            "length"=>19
-          }]
-        },
-        "type"=>"status",
-        "created_time"=>"2011-12-13T08:12:33+0000",
-        "updated_time"=>"2011-12-13T08:12:33+0000",
-        "comments"=>{"count"=>0}
-      }]
+      @posts = facebook_api.posts
       @graph.stub(:get_connections => @posts)
     end
 
@@ -38,7 +21,7 @@ describe User do
           @posts
         end
 
-        @user.posts.should have(1).entries
+        @user.posts.should have(2).entries
       end
 
       it "uses the query params passed in when retrieving" do
