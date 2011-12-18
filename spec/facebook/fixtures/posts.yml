@@ -2,7 +2,7 @@
   id: 1104556967
   from:
     name: "Lisa Leslie"
-    id: 967
+    id: 56967
   story: "Lisa Leslie and Lance Armstrong are now friends."
   story_tags:
     24:
@@ -21,13 +21,26 @@
   created_time: "2011-12-13T08:12:33+0000"
   updated_time: "2011-12-13T08:12:33+0000"
   comments:
-    count: 0
+    data:
+    - id: 40109
+      from:
+        name: 'Lance Armstrong'
+        id: 1585128
+      message: "I love you Lisa"
+      created_time: 2011-12-08T00:46:43+0000
+    - id: 56967
+      from:
+        name: 'Alex Rodriguez'
+        id: 100313
+      message: "She's spoken for Lance"
+      created_time: 2011-12-08T01:16:30+0000
+    count: 2
 
 -
   id: 2372165059261
   from:
-    name: "Alex Rodriguez"
-    id: 1000001
+    name: "Lisa Leslie"
+    id: 56967
   message: "I love this app!"
   picture: "https://unknown.com/pic.jpg"
   privacy:
@@ -38,17 +51,10 @@
   updated_time: "2011-12-03T19:11:11+0000"
   comments:
     data:
-      -
-        id: 2939893
-        from:
-          name: "Alex Rodriguez"
-          id: 8317889
-        message: "Good to know!"
-        message_tags:
-          -
-            id: 9951
-            name: "Joe Torre"
-            offset: 0
-            length: 14
-        "created_time": "2011-12-03T19:11:11+0000"
-    "count": 8
+    - id: 2939893
+      from:
+        name: "Lance Armstrong"
+        id: 1585128
+      message: "Me too!"
+      created_time: 2011-11-17T17:08:08+0000
+    count: 1
