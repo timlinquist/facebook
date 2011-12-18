@@ -7,6 +7,9 @@ require 'rspec/rails'
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
+# Rspec requires all *_spec.rb files by convention; not all *.rb files 
+require_relative './facebook/api_stub.rb'
+
 RSpec.configure do |config|
   # == Mock Framework
   #

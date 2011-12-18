@@ -2,11 +2,6 @@ require 'singleton'
 
 module API
   module Stubs
-    module Helpers
-      def facebook_api
-        API::Stubs::Facebook.instance
-      end
-    end
 
     class Facebook
       include Singleton
