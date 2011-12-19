@@ -19,7 +19,7 @@ class FriendsController < ApplicationController
     friend_rank = FriendRank.new(@posts)
     @ranked_friends = friend_rank.rank
 
-    render :action => :show
+    render :show
   end
 
   def show; end

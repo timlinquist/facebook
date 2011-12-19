@@ -1,4 +1,5 @@
 class FriendRank
+  attr_reader :posts
 
   def initialize(posts=[])
     @posts = posts
@@ -25,7 +26,9 @@ class FriendRank
   end
 
   def comments
-    @posts.collect{|post| post['comments']['data'] }.flatten
+    posts.collect{|post|
+      post.fetch('comments', {}).fetch('data', {})
+    }.flatten.reject{|comment| comment.nil? || comment.empty? }
   end
 
 end
