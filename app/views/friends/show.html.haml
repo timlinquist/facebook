@@ -1,1 +1,10 @@
-= @posts.size
+%h2 Here are your friends in ranking order based on how often they comment on your posts:
+
+%table
+  %th Name
+  %th # of recent comments
+
+  - @ranked_friends.each do |rank|
+    %tr
+      %td= rank.last['name']
+      %td= rank.last['count']
