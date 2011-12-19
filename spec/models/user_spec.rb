@@ -21,7 +21,7 @@ describe User do
           @posts
         end
 
-        @user.posts.should have(2).entries
+        @user.posts.should have_at_least(1).entries
       end
 
       it "uses the query params passed in when retrieving" do

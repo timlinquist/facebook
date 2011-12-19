@@ -7,6 +7,8 @@ describe FriendsController do
     @friend = {:id => '123', :name => 'Lebron James'}
     User.stub :new => @friend
     @friend.stub :posts => []
+    @friend_rank = mock('FriendRank', :rank => [])
+    FriendRank.stub :new => @friend_rank
   end
 
   describe "A friend's posts are successfully retrieved" do
@@ -26,14 +28,13 @@ describe FriendsController do
 
     describe "Ranking friends from a collection of posts" do
       it "assigns the friends in ranking order" do
-        friend_rank = mock('FriendRank')
-        FriendRank.should_receive(:new).with(@friend.posts).and_return(friend_rank)
+        FriendRank.should_receive(:new).with(@friend.posts).and_return(@friend_rank)
         ranked_friends = {
           'name' => 'Tim',
           'id' => '321',
           'count' => '5'
         }
-        friend_rank.should_receive(:rank).and_return(ranked_friends)
+        @friend_rank.should_receive(:rank).and_return(ranked_friends)
 
         post :create, {:friend => {:id => '123'}}
         assigns(:ranked_friends).should == ranked_friends

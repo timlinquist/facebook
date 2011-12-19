@@ -10,7 +10,7 @@ describe API::Stubs::Facebook do
 
   describe "reading the .yml fixture" do
     it "should populate the fixtures hash" do
-      @facebook_api.posts.should have(2).posts
+      @facebook_api.posts.should have_at_least(1).posts
     end
   end
 end
