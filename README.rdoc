@@ -4,11 +4,12 @@
   This app serves as the basis for programming challenges involving the Facebook
   Graph.
 
-## Desired Functionality
+## Challenge
 
   The app should:
   - Prompt the user to log into Facebook (already implemented in the base app)
-  - Prompt them to select one of their friends •	Retrieve the friend's profile feed (wall)
+  - Prompt them to select one of their friends
+  - Retrieve the friend's profile feed (wall)
   - Rank all commenters by the frequency of their comments, and display this information
     Note: We are interested in the comments on the posts on the friends's profile feed, rather than the actual posts themselves.
 
