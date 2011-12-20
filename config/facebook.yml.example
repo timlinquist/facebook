@@ -1,9 +1,0 @@
-development:
-  app_id: REPLACE WITH YOUR APP ID
-  secret_key: REPLACE WITH YOUR SECRET KEY
-test:
-  app_id: REPLACE WITH YOUR APP ID
-  secret_key: REPLACE WITH YOUR SECRET KEY
-production:
-  app_id: REPLACE WITH YOUR APP ID
-  secret_key: REPLACE WITH YOUR SECRET KEY
