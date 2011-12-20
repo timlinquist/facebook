@@ -11,8 +11,6 @@ gem 'rails', '3.0.3'
 # Deploy with Capistrano
 # gem 'capistrano'
 
-gem 'settingslogic', '~> 2.0'
-
 # Bundle the extra gems:
 # gem 'bj'
 # gem 'nokogiri'
