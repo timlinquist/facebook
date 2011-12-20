@@ -20,6 +20,9 @@ module FbBase
     # Custom directories with classes and modules you want to be autoloadable.
     config.autoload_paths += %W(#{config.root}/lib)
 
+    ENV['FACEBOOK_APP_ID'] = '322201971143207' unless ENV.has_key?('FACEBOOK_APP_ID')
+    ENV['FACEBOOK_APP_SECRET'] = '7cc00eab6bf9bd8f31dd4132b43455bd' unless ENV.has_key?('FACEBOOK_APP_SECRET')
+
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
     # config.plugins = [ :exception_notification, :ssl_requirement, :all ]

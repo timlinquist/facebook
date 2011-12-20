@@ -20,7 +20,7 @@ module FacebookAuth
     end
 
     def facebook_auth
-      @oauth = Koala::Facebook::OAuth.new(Settings.facebook.app_id, Settings.facebook.app_secret)
+      @oauth = Koala::Facebook::OAuth.new(ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET'])
 
       begin
         fb_user_info = @oauth.get_user_info_from_cookie(request.cookies)
